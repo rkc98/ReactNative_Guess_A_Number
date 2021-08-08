@@ -1,6 +1,7 @@
 import React from 'react'
 import { Alert, Button, Image, StyleSheet, Text, View } from 'react-native'
 import BodyText from '../components/BodyText'
+import StyleButton from '../components/StyleButton'
 import TitleText from '../components/TitleText'
 const GameOver = (props) => {
     return (
@@ -9,13 +10,17 @@ const GameOver = (props) => {
                 The Game is Over!!
             </TitleText>
             <Image style={styles.image} source={require('../assets/images/success.png')} />
-            <BodyText>
-                Number of Rounds :{props.getrounds}
+            <View style={styles.resultText}>
+            <BodyText style={{textAlign:'center',fontSize:20}}>
+               Your phone needed
+               <Text style={styles.highlight}> {props.getrounds} </Text>
+                rounds to guess the number 
+                <Text style={styles.highlight}> {props.getuserNumber}</Text>
             </BodyText>
-            <BodyText>
-                Your Number:{props.getuserNumber}
-            </BodyText>
-            <Button title="New Game" onPress={props.onRestart} />
+            </View>
+            <StyleButton onPress={props.onRestart}>
+                New Game
+            </StyleButton>
 
         </View>
 
@@ -37,6 +42,16 @@ const styles=StyleSheet.create({
      borderColor:"black"
      
 
+ },
+ highlight:{
+     color:"green",
+     fontFamily:'open-sans-bold',
+     
+ },
+ resultText:{
+     marginHorizontal:30,
+     marginVertical:15
  }
+
 })
 export default GameOver

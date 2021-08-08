@@ -3,7 +3,7 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 
 const BodyText = (props) => {
     return (
-        <Text style={styles.body}>
+        <Text style={{...styles.input,...props.style}}>
             {props.children}
         </Text>
 
